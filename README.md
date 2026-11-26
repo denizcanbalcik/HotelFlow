@@ -114,7 +114,7 @@ Im Test wurde n8n mit einer lokalen Node.js-Umgebung gestartet. Die Oberfläche 
 
 ### Der aktuelle Workflow
 
-![Lokaler n8n-Workflow: CSV-Upload bis Excel-Ausgabe](docs/n8n-workflow.png)
+![Lokaler n8n-Workflow: CSV-Upload bis Excel-Ausgabe](n8n-workflow.png)
 
 **Manueller Ablauf:** In HotelFlow die CSV herunterladen -> das lokale n8n-Formular öffnen -> CSV hochladen -> Daten verarbeiten -> Excel-Datei erzeugen.
 
