@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>HotelFlow – Housekeeping Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1>Hotel<span style="color: #69b2ff">Flow</span></h1>
+        <small>Housekeeping Operations · Portfolio-Demo</small>
+      </div>
+      <span class="tag">DEMO · Fiktive Daten</span>
+    </header>
+    <main>
+      <div class="intro">
+        <div>
+          <h2>Housekeeping Dashboard</h2>
+          <div class="muted">
+            30 Zimmer · 5 Mitarbeitende · Status und Zuweisungen bearbeiten
+          </div>
+        </div>
+        <button id="reset">↺ Demo zurücksetzen</button>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <span>Zimmer gesamt</span><strong id="total">30</strong>
+        </div>
+        <div class="stat">
+          <span>Zu reinigen</span><strong id="dirty">0</strong>
+        </div>
+        <div class="stat">
+          <span>In Bearbeitung</span><strong id="progress">0</strong>
+        </div>
+        <div class="stat">
+          <span>Gereinigt / Bereit</span><strong id="complete">0</strong>
+        </div>
+        <section class="panel" style="grid-column: span 2">
+          <h2>Neues Zimmer hinzufügen</h2>
+
+          <form id="roomForm">
+            <input
+              type="number"
+              id="roomNumber"
+              placeholder="Zimmernummer"
+              required
+            />
+
+            <select id="roomFloor">
+              <option value="1">1. Etage</option>
+              <option value="2">2. Etage</option>
+              <option value="3">3. Etage</option>
+            </select>
+
+            <button type="submit" class="primary">Zimmer hinzufügen</button>
+          </form>
+        </section>
+        <section class="panel" style="grid-column: span 2">
+          <form id="employeeForm">
+            <h3>Neuen Mitarbeiter hinzufügen</h3>
+
+            <input
+              type="text"
+              id="employeeName"
+              placeholder="Mitarbeitername"
+              required
+            />
+
+            <button type="submit">Mitarbeiter hinzufügen</button>
+          </form>
+          <select id="employeeToDelete">
+            <option value="">Mitarbeiter auswählen</option>
+          </select>
+          <button type="button" id="deleteEmployee">Mitarbeiter löschen</button
+          ><!-- Button zum Entfernen ausgeschiedener Mitarbeiter -->
+        </section>
+      </div>
+      <section class="panel">
+        <h2 style="font-size: 17px">Aufgabenverwaltung</h2>
+        <div class="toolbar">
+          <input
+            id="search"
+            placeholder="Zimmernummer suchen…"
+            aria-label="Zimmernummer suchen"
+          /><select id="filter" aria-label="Status filtern">
+            <option value="">Alle Status</option>
+            <option>Zu reinigen</option>
+            <option>In Bearbeitung</option>
+            <option>Gereinigt</option>
+            <option>Bereit</option>
+          </select>
+          <!-- Ändert den Reinigungsstatus mehrerer Zimmer gleichzeitig. -->
+          <!-- Filtert die Zimmer nach Etagen. -->
+          <select id="floorFilter">
+            <option value="">Alle Etagen</option>
+            <option value="1">1. Etage</option>
+            <option value="2">2. Etage</option>
+            <option value="3">3. Etage</option>
+            <option value="4">4. Etage</option>
+          </select>
+          <select id="bulkStatus">
+            <option value="Gereinigt">Gereinigt</option>
+            <option value="Zu reinigen">Zu reinigen</option>
+            <option value="In Bearbeitung">In Bearbeitung</option>
+            <option value="Bereit">Bereit</option>
+          </select>
+
+          <button type="button" id="bulkUpdate" class="primary">
+            Auswahl aktualisieren
+          </button>
+          <button id="csv" class="primary">CSV exportieren</button>
+        </div>
+        <div class="scroll">
+          <table>
+            <thead>
+              <tr>
+                <!-- Checkbox zum Auswählen aller Zimmer -->
+                <th>
+                  <input type="checkbox" id="selectAllRooms" />
+                </th>
+                <th>Zimmer</th>
+                <th>Etage</th>
+                <th>Status</th>
+                <th>Mitarbeiter/in</th>
+                <th>Status ändern</th>
+                <th>Aktion</th>
+              </tr>
+            </thead>
+            <tbody id="rooms"></tbody>
+          </table>
+        </div>
+      </section>
+      <footer>
+        HotelFlow v0.1 · Daten bleiben lokal im Browser (localStorage). Keine
+        Verbindung zu einem echten Hotel. CSV enthält nur fiktive Daten.
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
